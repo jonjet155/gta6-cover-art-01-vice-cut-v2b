@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VICE CUT — Painted Cover Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VICE CUT</span>
+    <span class="brand-sub">Painted Cover Studio — original illustrations, no Rockstar art</span>
+  </div>
+  <div class="top-actions">
+    <button id="exportBtn" class="primary" type="button">Export PNG</button>
+  </div>
+</header>
+
+<main class="studio">
+  <section class="stage-wrap">
+    <div class="stage" id="stage">
+      <canvas id="preview" width="640" height="640"></canvas>
+    </div>
+    <p id="status" class="status">Loading the painted panels…</p>
+    <p class="hint">Click a panel to select it. Drag inside it to pan. Mouse wheel or the slider zooms. Click a tray photo, then a panel, to place it there.</p>
+  </section>
+
+  <aside class="panel" id="controls">
+    <h2>Cover</h2>
+    <label class="field">Layout
+      <span class="chips" id="layoutGroup"></span>
+    </label>
+    <label class="field">Colour grade
+      <span class="chips" id="gradeGroup"></span>
+    </label>
+    <label class="field">Caption style
+      <span class="chips" id="styleGroup"></span>
+    </label>
+    <label class="field">Title
+      <input id="titleInput" type="text" maxlength="24" value="VICE CUT" autocomplete="off">
+    </label>
+    <label class="field">Tagline
+      <input id="taglineInput" type="text" maxlength="60" value="Painted in Leonida." autocomplete="off">
+    </label>
+    <div class="toggles">
+      <label><input id="starsToggle" type="checkbox"> Five stars</label>
+      <label><input id="badgeToggle" type="checkbox" checked> LEONIDA badge</label>
+    </div>
+    <label class="field">Export size
+      <span class="chips" id="sizeGroup"></span>
+    </label>
+    <label class="field"><span id="zoomLabel">Zoom 100%</span>
+      <input id="zoomSlider" type="range" min="1" max="3" step="0.05" value="1">
+    </label>
+
+    <h2>Photos</h2>
+    <div class="tray" id="tray"></div>
+    <div class="photo-actions">
+      <label class="upload-btn">Add your photos
+        <input id="uploadInput" type="file" accept="image/*" multiple hidden>
+      </label>
+      <button id="fillAllBtn" type="button">Fill all panels</button>
+      <button id="resetBtn" type="button">Reset cover</button>
+    </div>
+    <p class="note">Your photos never leave this machine — they are read in your browser only. Every illustration here is original, painted for this studio.</p>
+  </aside>
+</main>
+
+<footer class="foot">
+  <span>VICE CUT — an original cover maker. Not affiliated with Rockstar Games. No logos, artwork or fonts from any game.</span>
+</footer>
+
+<script src="src/cover.js"></script>
+<script src="src/main.js"></script>
+<script src="src/shots.js"></script>
+</body>
+</html>
