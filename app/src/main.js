@@ -185,8 +185,8 @@
     // image exactly covers the panel, so there is nothing to pan.
     const spanX = dw - (maxX - minX);
     const spanY = dh - (maxY - minY);
-    if (spanX > 4) panel.ox = Math.min(1, Math.max(0, drag.ox - (p.x - drag.x) / spanX));
-    if (spanY > 4) panel.oy = Math.min(1, Math.max(0, drag.oy - (p.y - drag.y) / spanY));
+    if (spanX > 0) panel.ox = Math.min(1, Math.max(0, drag.ox - (p.x - drag.x) / spanX));
+    if (spanY > 0) panel.oy = Math.min(1, Math.max(0, drag.oy - (p.y - drag.y) / spanY));
     draw();
   });
 
@@ -308,7 +308,9 @@
     bindControls();
     rebuildControls();
     ViceCut.loadAllImages(state).then(function (map) {
-      images = map;
+      // Merge, never replace: a photo uploaded while the samples were
+      // still loading must survive (its tray thumb already points at it).
+      map.forEach(function (img, src) { images.set(src, img); });
       ready = true;
       window.__shotReady = false;
       draw();
